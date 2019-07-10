@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Giftastic</title>
+    <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
     <script
@@ -15,13 +16,15 @@
 <body>
     <div id="search-buttons">
     </div>
-    <div id="results">
+    <div id="main">
+        <div id="results">
+        </div>
+        <form id="add-buttons">
+            <label>Add a search term:</label>
+            <input id="new-button-text">
+            <input type="submit" id="add"></input>
+        </form>
     </div>
-    <form id="add-buttons">
-        <label>Add an emotion:</label>
-        <input id="new-button-text">
-        <input type="submit" id="add"></input>
-    </form>
 
 
     <script src="assets/javascript/giftastic.js"></script>

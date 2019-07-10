@@ -1,3 +1,52 @@
+body,
+button {
+    font-family: 'Russo One', sans-serif;
+    letter-spacing: 0.03em;
+}
+
+#main {
+    position: relative;
+}
+
+button {
+    font-size: 20px;
+}
+
+#results {
+    width: 80%;
+}
+
 #results img {
     height: 200px;
+    
+}
+
+.result {
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+}
+
+.result p {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    position: absolute;
+    top: "+=100";
+    padding: 0.5em;
+}
+
+
+#add-buttons {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 1px black solid;
+    padding: 10px;
+    margin: 10px;
+}
+
+#add-buttons label, 
+#add-buttons input {
+    display: block;
 }
