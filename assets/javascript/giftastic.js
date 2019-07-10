@@ -23,7 +23,7 @@ $(document).on("click", "#favorites-button", function() {
     console.log("favorites button clicked");
     $("#results").empty();
     for (let i = 0; i < favorites.length; i++) {
-        queryUrl = `http://api.giphy.com/v1/gifs/${favorites[i]}?api_key=2IlH8p21NJKNOeKm9FEJ5RCQp5jNVnc8`;
+        queryUrl = `https://api.giphy.com/v1/gifs/${favorites[i]}?api_key=2IlH8p21NJKNOeKm9FEJ5RCQp5jNVnc8`;
     
         $.ajax({
             url: queryUrl,
