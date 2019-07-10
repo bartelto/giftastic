@@ -1,7 +1,19 @@
+/*body {
+    background-image: url("../images/Artboard\ 292\ -\ 300ppi.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}*/
+
 body,
 button {
     font-family: 'Russo One', sans-serif;
     letter-spacing: 0.03em;
+    
+}
+
+
+#search-buttons {
+    margin-bottom: 10px;
 }
 
 #main {
@@ -14,10 +26,12 @@ button {
 
 #results {
     width: 80%;
+    
 }
 
 #results img {
     height: 200px;
+    border-radius: 15px;
     
 }
 
@@ -25,6 +39,8 @@ button {
     display: inline-block;
     position: relative;
     margin-right: 10px;
+    margin-bottom: 6px;
+    
 }
 
 .result p {
@@ -33,6 +49,7 @@ button {
     position: absolute;
     top: "+=100";
     padding: 0.5em;
+    border-radius: 15px;
 }
 
 

@@ -1,7 +1,7 @@
-let emotions = [];
-emotions = JSON.parse(localStorage.getItem("searchTerms"));
-if (!Array.isArray(emotions)) {
-    emotions = [
+let topics = [];
+topics = JSON.parse(localStorage.getItem("searchTerms"));
+if (!Array.isArray(topics)) {
+    topics = [
         "happy",
         "sad",
         "angry",
@@ -13,11 +13,6 @@ if (!Array.isArray(emotions)) {
     ];
 }
 
-if (emotions.length === 0) {
-   
-}
-
-
 function addButton(buttonText) {
     let newButton = $("<button>");
     newButton.val(buttonText);
@@ -27,16 +22,16 @@ function addButton(buttonText) {
     $("#search-buttons").append(newButton);
 }
 
-for (let i=0; i < emotions.length; i++) {
-    console.log(emotions[i]);
-    addButton(emotions[i]);
+for (let i=0; i < topics.length; i++) {
+    console.log(topics[i]);
+    addButton(topics[i]);
 }
 
 $("#add").on("click", function() {
     event.preventDefault();
-    emotions.push($("#new-button-text").val());
+    topics.push($("#new-button-text").val());
     addButton($("#new-button-text").val());
-    localStorage.setItem("searchTerms", JSON.stringify(emotions));
+    localStorage.setItem("searchTerms", JSON.stringify(topics));
 });
 
 
@@ -52,12 +47,13 @@ $(document).on("click", ".search", function() {
     }).then( function(response) {
         console.log(response);  
         $(".result").hide();
+
         for (let i=0; i<Math.min(10, response.data.length); i++) {
             let newDiv = $("<div>");
             newDiv.addClass("result");
             newDiv.hide();
 
-            newDiv.append(`<p>Rating: ${response.data[i].rating}</p>`);
+            newDiv.append(`<p>Rating: ${response.data[i].rating.toUpperCase()}</p>`);
 
             let newImage = $("<img>");
             newImage.attr("src", response.data[i].images.original_still.url);
@@ -69,7 +65,6 @@ $(document).on("click", ".search", function() {
             newDiv.append(newImage);
 
             $("#results").prepend(newDiv);
-            //newDiv.fadeIn(1000);
         }
         $(".result").fadeIn(1000);
     });
