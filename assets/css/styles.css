@@ -13,11 +13,16 @@ button {
 
 
 #search-buttons {
+    margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #main {
     position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 button {
@@ -52,6 +57,14 @@ button {
     border-radius: 15px;
 }
 
+/* "favorite" heart */
+.result i { 
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: white;
+    font-size: 24px;
+}
 
 #add-buttons {
     display: inline-block;
