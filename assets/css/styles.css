@@ -14,14 +14,15 @@ button,
 }
 
 
-#search-buttons {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+#topic-buttons {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 5px;
+    background-color: darkslateblue;
 }
 
-#search-buttons button {
+#topic-buttons button {
     transform: skew(-20deg);
     margin-right: 5px;
     margin-bottom: 5px;
@@ -30,7 +31,6 @@ button,
 #main {
     position: relative;
     margin-left: 10px;
-    margin-right: 10px;
 }
 
 button,
@@ -40,8 +40,7 @@ button,
 
 
 #results {
-    width: 80%;
-    
+    padding-top: 10px;
 }
 
 #results img {
@@ -76,41 +75,29 @@ button,
     font-size: 24px;
 }
 
-#add-buttons {
+#add-topics-form {
     display: inline-block;
     position: absolute;
     right: 0;
     top: 0;
-    border: solid 1px;
-    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
-    background-image: linear-gradient(135deg, darkslateblue, slateblue 50%);
-    padding: 20px;
-    margin: 10px;
-    
-    border-radius: 0 66px 0 66px;
+    background-color: darkslateblue;
+    padding: 0 20px 20px 20px;
+    margin: 0 0 10px 10px;
+    border-radius: 0 0 0 56px;
 
 }
-#add-buttons label {
+#add-topics-form label {
     color: white;
     font-size: 20px;
-}
-
-#add-buttons label, 
-#add-buttons input {
     display: block;
 }
 
 #new-button-text {
     opacity: 0.8;
-}
-
-
-#new-button-text {
     width: auto;
     margin-top: 5px;
-    margin-bottom: 5px;
     font-size: 20px;
-    border-radius: 0 16px 0 16px;
+    border-radius: 0 0 0 31px;
     border-color: darkgray;
     padding-left: 10px;
 }
@@ -125,3 +112,36 @@ button,
     padding-right: 10px;
 
 }
+
+@media screen and (max-width: 800px) {
+    #add-topics-form {
+        display: block;
+        border-radius: 0;
+        position: static;
+        margin-left: -10px;
+        text-align: center;
+    }
+
+    #add-topics-form label {
+        display: inline-block;
+    }
+
+    #new-button-text {
+        border-radius: 0;
+    }
+
+    #topic-buttons {
+        text-align: center;
+    }
+
+    #topic-buttons button{
+        color: white;
+    }
+}
+/*
+@media screen and (max-width: 300px) {
+    .result:first-child {
+        display: block;
+    }
+}
+*/

@@ -6,7 +6,7 @@ function addButton(buttonText) {
     newButton.text(buttonText);
     newButton.addClass("search");
     
-    $("#search-buttons").append(newButton);
+    $("#topic-buttons").append(newButton);
 }
 
 $("#add").on("click", function() {
@@ -33,6 +33,7 @@ $(document).on("click", "#favorites-button", function() {
             $(".result").fadeIn(1000);
         });
     }
+    wrapAroundForm();
 });
 
 $(document).on("click", ".search", function() {
@@ -44,15 +45,18 @@ $(document).on("click", ".search", function() {
         url: queryUrl,
         method: "GET"
     }).then( function(response) {
+        console.log(response);
         $(".result").hide();
+        //$(".result").css("opacity", 0);
 
-        for (let i=0; i<Math.min(10, response.data.length); i++) {
+        for (let i=response.data.length-1; i >= 0; i--) {
             addResult(response.data[i], buttonText, favorites.includes(response.data[i].id));
         }
-
+        
         $(".result").fadeIn(1000);
+        //$(".result").animate( {opacity: 1}, 1000);
+        wrapAroundForm();
     });
-
 });
 
 $(document).on("click", ".gifImage", function() {
@@ -91,9 +95,11 @@ $("#main").on("click", ".fa-heart", function() {
 
 function addResult( gifData, altText, isFav) {
     let newDiv = $("<div>");
+    //newDiv.css("opacity", 0);
     newDiv.addClass("result");
     newDiv.attr("data-id", gifData.id);
-    newDiv.hide();
+    newDiv.attr("data-width", Math.round(200*parseInt(gifData.images.original.width)/parseInt(gifData.images.original.height)));
+    //newDiv.hide();
     newDiv.append(`<p>Rating: ${gifData.rating.toUpperCase()}</p>`);
 
     let newImage = $("<img>");
@@ -115,6 +121,33 @@ function addResult( gifData, altText, isFav) {
         heart.addClass("far fa-heart");
     newDiv.append(heart);
     $("#results").prepend(newDiv);
+}
+
+$( window ).resize(function() {
+    //console.log("window width: " + window.innerWidth);
+    wrapAroundForm();
+});
+
+//keep the results from overlapping with the 'add topic' form
+function wrapAroundForm () {
+    console.log("wrapAroundForm");
+    $(".result").css("margin-right", ""); // clear settings from previous window width
+    let firstLineLastItem = 0;
+    let numResults = $(".result").length;
+    console.log(numResults + " results");
+    let oldRowWidth = 0;
+    let rowWidth = 0;
+    for (let i = 1; i < numResults+1; i++ ) {
+        oldRowWidth = rowWidth;
+        rowWidth = oldRowWidth + parseInt($(`.result:nth-child(${i})`).attr("data-width")) + 10;
+        console.log("rowwidth " + rowWidth);
+        if (i>1 && (rowWidth > ($("#main").innerWidth() - $("#add-topics-form").outerWidth(true)))) {
+            let rightMargin = $("#main").innerWidth() - oldRowWidth;
+            $(`.result:nth-child(${i - 1})`).css("margin-right", `${rightMargin}px`);
+            console.log(`break after result ${i-1}` );
+            return;
+        }
+    }
 }
 
 let topics = [];
@@ -141,7 +174,7 @@ if (!Array.isArray(favorites)) {
 let favsButton = $("<button>");
 favsButton.html(`<i class="fas fa-heart fa-xs"></i>`);
 favsButton.attr("id", "favorites-button");
-$("#search-buttons").append(favsButton);
+$("#topic-buttons").append(favsButton);
 
 for (let i=0; i < topics.length; i++) {
     addButton(topics[i]);
