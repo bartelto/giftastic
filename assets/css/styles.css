@@ -135,7 +135,10 @@ button,
     }
 
     #topic-buttons button{
+        border: none;
+        background-color: transparent;
         color: white;
+        font-size: 16px;
     }
 }
 /*
