@@ -21,19 +21,26 @@ $("#add").on("click", function() {
 $(document).on("click", "#favorites-button", function() {
     //console.log("favorites button clicked");
     $("#results").empty();
+
+    let resultCount = 0;
+
     for (let i = 0; i < favorites.length; i++) {
         queryUrl = `https://api.giphy.com/v1/gifs/${favorites[i]}?api_key=2IlH8p21NJKNOeKm9FEJ5RCQp5jNVnc8`;
-    
+
         $.ajax({
             url: queryUrl,
             method: "GET"
         }).then( function(response) {
+            resultCount++;
             $(".result").hide();
             addResult(response.data, "favorite", true);
             $(".result").fadeIn(1000);
+            if (resultCount === favorites.length-1) {
+                wrapAroundForm();
+            }
         });
     }
-    wrapAroundForm();
+    
 });
 
 $(document).on("click", ".search", function() {
@@ -47,14 +54,11 @@ $(document).on("click", ".search", function() {
     }).then( function(response) {
         console.log(response);
         $(".result").hide();
-        //$(".result").css("opacity", 0);
 
         for (let i=response.data.length-1; i >= 0; i--) {
             addResult(response.data[i], buttonText, favorites.includes(response.data[i].id));
         }
-        
         $(".result").fadeIn(1000);
-        //$(".result").animate( {opacity: 1}, 1000);
         wrapAroundForm();
     });
 });

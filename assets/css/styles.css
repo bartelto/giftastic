@@ -44,8 +44,10 @@ button,
 }
 
 #results img {
-    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
     border-radius: 15px;
+
     
 }
 
@@ -73,6 +75,7 @@ button,
     bottom: 10px;
     color: white;
     font-size: 24px;
+    text-shadow: 0 0 15px black;
 }
 
 #add-topics-form {
@@ -139,6 +142,10 @@ button,
         background-color: transparent;
         color: white;
         font-size: 16px;
+    }
+
+    .result i { 
+        font-size: 36px;
     }
 }
 /*
