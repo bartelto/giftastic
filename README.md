@@ -13,4 +13,6 @@ Best of all, GIFtastic maintains your added emotions/topics -- and favorites -- 
 
 https://bartelto.github.io/giftastic/
 
-Created by Todd Bartelt (https://toddbartelt.com)
+## The author
+
+This app was developed by **Todd F. Bartelt** as part of the Full-Stack Web Development program at University of Kansas Professional and Continuing Education. Learn more about Todd at [toddbartelt.com](http://toddbartelt.com).
